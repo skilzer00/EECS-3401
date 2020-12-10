@@ -1,0 +1,193 @@
+%% ----------------------------------------------------------
+
+%% EECS 3401 Fall 2020 Assignment 2 
+
+%% Family name: Sakib
+
+%% Given name: Sadman 
+
+%% Student number: 215916232
+
+
+
+%%    Answers to Questions 6-10
+
+%% Instructions: 
+
+%% Please edit this file in the following way to answer the text
+%% questions of Assignment 1. 
+
+%% - Please replace any occurence of '[yes/no]' with either 'yes' or
+%% 'no' to answer the respective question.
+
+%% - Replace any occurence of '[explain N words]' or '[if yes (resp.
+%%   no), explain N words]' with an explanation containing no more
+%%   than N words if the condition (yes/no) applies to your previous
+%%   answer.
+
+%% - Do not remove any other lines, in particular do not remove the
+%%   task-tags (<tasknumber>)
+
+%% - Any line starting with a '%' will be ignored.
+
+%% - Submit this file electronically.
+
+%% ----------------------------------------------------------
+
+
+
+%% 6. Which of the four heuristics are admissible?
+
+%%  - hfn_null
+<6.1>
+yes
+
+%%  - hfn_misplaced
+<6.2>
+yes
+
+%%  - hfn_manhattan
+<6.3>
+yes
+
+%%  - hfn_inversions
+<6.4>
+yes
+
+
+
+
+%% /* ------------------------------------------------------ */
+
+% 7. Suppose for sliding a tile to the left we would change the
+% cost from 1 to 0.5 and leave all the other moves the same cost.
+% Does this affect the admissibility of the heuristics? Which of
+% them are admissible now?
+
+
+%%  - hfn_null
+<7.1.1>
+yes
+
+<7.1.2>
+[if no explain in 100 words or less]
+
+
+%%  - hfn_misplaced
+<7.2.1>
+no
+
+<7.2.2>
+[if no explain in 100 words or less]
+The heurisitc function is not admissible when there is at least one or more movement of a tile to the left. When there is a movement to the left
+the actual cost of reaching the goal state decreases without regards to the number of misplaced tiles in state S. This cause the function to overestimate the cost to reach a goal state.
+
+
+%%  - hfn_manhattan
+<7.3.1>
+no
+
+<7.3.2>
+[if no explain in 100 words or less]
+The heurisitc function is not admissible when there is at least one or more movement of a tile to the left. When there is a movement to the left
+the actual cost of reaching the goal state decreases without regards to the number of misplaced tiles in state S. This cause the function to overestimate the cost to reach a goal state.
+
+
+%%  - hfn_inversions
+<7.4.1>
+no
+
+<7.4.2>
+[if no explain in 100 words or less]
+The heurisitc function is not admissible when there is at least one or more movement of a tile to the left. When there is a movement to the left
+the actual cost of reaching the goal state decreases without regards to the number of misplaced tiles in state S. This cause the function to overestimate the cost to reach a goal state.
+
+
+
+%% /* ------------------------------------------------------ */
+
+% 8. Now suppose we would change the cost for sliding a tile to the
+% left to 2 and leave all the other moves the same cost. Does this
+% now affect the admissibility of the four heuristics? Again, which
+% of them are admissible?
+
+%%  - hfn_null
+<8.1.1>
+yes
+
+<8.1.2>
+[if no explain in 100 words or less]
+
+
+%%  - hfn_misplaced
+<8.2.1>
+yes
+
+<8.2.2>
+[if no explain in 100 words or less]
+
+
+%%  - hfn_manhattan
+<8.3.1>
+yes
+
+<8.3.2>
+[if no explain in 100 words or less]
+
+
+%%  - hfn_inversions
+<8.4.1>
+yes
+
+<8.4.2>
+[if no explain in 100 words or less]
+
+
+
+%% /* ------------------------------------------------------ */
+
+% 9. In the former modification (sliding to the LEFT costs 0.5), can
+% you say for sure which heuristic will be the fastest (expand the
+% least number of states) in finding a (not necessary optimal)
+% solution? Explain.
+<9.1>
+yes
+
+<9.2>
+[explain in 100 words or less]
+Out of the three I believe "hfn_misplaced" will be the fastest in finding a solution.This is because the heuristic function simply
+returns the count of misplaced titles in states S where as the other function require calculating the manhattan distance and counting
+the number of inverted pair of tiles which requires expanding more states hence requires more time. 
+
+%% /* ------------------------------------------------------ */
+
+% 10. One can obtain another heuristic for the N-puzzle by relaxing the
+% problem as follows: let's say that a tile can move from square A to
+% square B if B is blank.  The exact solution to this problem defines
+% Gaschnig's heuristic. Explain why Gaschnig's heuristic is at
+% least as accurate as hfn_misplaced.  Show some cases where it
+% is more accurate than both the hfn_misplaced} and 
+% hfn_manhattan} heuristics.  Can you suggest a way to calculate
+% Gaschnig's heuristic efficiently?
+
+<10.1>
+[explain in 100 words or less]
+The main difference between Gaschnig's heuristic and hft_misplaced heuristic is , hfn_misplaced can place any tile in any different position in one move while Gaschnig's can only move
+the tile to a blank spot.If the blank location is in the goal position and tiles are still misplaced then Gaschnig's heuristic might need at least two moves hence gaschnig's heurisitc always returns
+an equal or more number of moves than hfn_misplaced heurisitic.
+
+<10.2>
+[describe cases in 100 words or less]
+Given board representation a state S = [[2,1],[3,blank]. Goal State is [[1,2],[3,blank]].
+hfn_misplaced heuristic will return 2.
+hfn_manhattan heuristic will return 2.
+But Gaschnig's heuristic will return 3, being more accurate than the other two.
+
+<10.3>
+[explain in 100 words or less]
+To calculate Gaschnig's heuristic's more efficiently :-
+Given B is the current 'blank' location, 
+if B is occupied by tile X (not 'blank') in the goal state, 
+move X to B, 
+otherwise, move any misplaced tile to B.
+Repeat until the goal state is reached.

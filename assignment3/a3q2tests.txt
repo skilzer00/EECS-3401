@@ -1,0 +1,11 @@
+?- solPartB.
+true .
+
+?- do(getBox2toRoom2,s0,S), executable(S), show_act_seq(S), goalPartB(S).
+go(37,42)
+go(42,13)
+go(13,7)
+push(b2,7,13)
+push(b2,13,27)
+S = do(push(b2, 13, 27), do(push(b2, 7, 13), do(go(13, 7), do(go(42, 13), do(go(37, 42), s0))))) .
+
